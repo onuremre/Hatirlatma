@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EtkinlikModelStoreContainer" CdmEntityContainer="EtkinlikEntities">
+    <EntitySetMapping Name="etkinlik">
+      <EntityTypeMapping TypeName="EtkinlikModel.etkinlik">
+        <MappingFragment StoreEntitySet="etkinlik">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="alarm_tarih" ColumnName="alarm_tarih" />
+          <ScalarProperty Name="alarm_saat" ColumnName="alarm_saat" />
+          <ScalarProperty Name="et_bas_tarih" ColumnName="et_bas_tarih" />
+          <ScalarProperty Name="et_bas_saat" ColumnName="et_bas_saat" />
+          <ScalarProperty Name="et_bit_tarih" ColumnName="et_bit_tarih" />
+          <ScalarProperty Name="et_bit_saat" ColumnName="et_bit_saat" />
+          <ScalarProperty Name="et_aciklama" ColumnName="et_aciklama" />
+          <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kullanici">
+      <EntityTypeMapping TypeName="EtkinlikModel.kullanici">
+        <MappingFragment StoreEntitySet="kullanici">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

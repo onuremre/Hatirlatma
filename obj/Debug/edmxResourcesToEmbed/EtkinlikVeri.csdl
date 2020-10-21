@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EtkinlikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="etkinlik">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="alarm_tarih" Type="DateTime" Precision="0" />
+    <Property Name="alarm_saat" Type="Time" Precision="7" />
+    <Property Name="et_bas_tarih" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="et_bas_saat" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="et_bit_tarih" Type="DateTime" Precision="0" />
+    <Property Name="et_bit_saat" Type="Time" Precision="7" />
+    <Property Name="et_aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullanici_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="kullanici" Relationship="Self.fk_id" FromRole="etkinlik" ToRole="kullanici" />
+  </EntityType>
+  <EntityType Name="kullanici">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="sifre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="etkinlik" Relationship="Self.fk_id" FromRole="kullanici" ToRole="etkinlik" />
+  </EntityType>
+  <Association Name="fk_id">
+    <End Role="kullanici" Type="Self.kullanici" Multiplicity="1" />
+    <End Role="etkinlik" Type="Self.etkinlik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kullanici">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="etkinlik">
+        <PropertyRef Name="kullanici_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EtkinlikEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="etkinlik" EntityType="Self.etkinlik" />
+    <EntitySet Name="kullanici" EntityType="Self.kullanici" />
+    <AssociationSet Name="fk_id" Association="Self.fk_id">
+      <End Role="kullanici" EntitySet="kullanici" />
+      <End Role="etkinlik" EntitySet="etkinlik" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

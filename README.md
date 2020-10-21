@@ -1,1 +1,1 @@
-# Hatırlatma
+# Hatirlatma
